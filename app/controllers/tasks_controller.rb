@@ -15,6 +15,7 @@ class TasksController < ApplicationController
   # GET /tasks/new
   def new
     @task = Task.new
+    @users = User.all.map {|user| [user.username, user.id]}
   end
 
   # GET /tasks/1/edit
