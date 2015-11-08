@@ -6,7 +6,7 @@ one:
   duration: 2015-11-07 18:15:16
   start_date: 2015-11-07
   end_date: 2015-11-07
-  user_id: 1
+  user: one
   check: false
 
 two:
@@ -15,5 +15,5 @@ two:
   duration: 2015-11-07 18:15:16
   start_date: 2015-11-07
   end_date: 2015-11-07
-  user_id: 1
+  user: two
   check: false
