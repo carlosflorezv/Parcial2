@@ -22,15 +22,36 @@
         <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
       </ul>
     
-        <!-- Left Nav Section -->
         <section class="top-bar-section">
+          <!-- Left Nav Section -->
         <ul class="left">
+          <li class"divider"></li>
           <li>
             <%= link_to 'Tasks', tasks_path %>
           </li>
           <li>
             <%= link_to 'Users', users_path %>
           </li>
+        </ul>
+        
+        <!-- Right Nav Section -->
+        <ul class="right">
+          <li class"divider"></li>
+          <% if user_signed_in? %>
+              <li>
+                <%= link_to current_user.username,  edit_user_registration_path %>
+              </li>
+              <li>
+                <%= link_to 'Log Out', destroy_user_session_path, method: :delete %>
+              </li>
+          <% else %>
+              <li class="active">
+                <%= link_to 'Sign Up', new_user_registration_path %>
+              </li>
+              <li>
+                <%= link_to 'Sign In', new_user_session_path %>
+              </li>
+          <% end %>
         </ul>
       </section>
     </nav>
