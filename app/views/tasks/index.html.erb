@@ -4,8 +4,14 @@
 
 <h1>Listing Tasks</h1>
 
+<h2 class="subheader">Unfinished Tasks</h2>
+  <h3>Matured Tasks</h3>
     <% @tasks.each do |task| %>
-    <hr>
+      <% 
+      datenow = Time.now 
+      %>
+      <% if task.check == false && task.end_date < datenow %>
+        <hr>
     <div class="row">
       <div class="columns large-9 medium-6">
       <blockquote>
@@ -19,9 +25,69 @@
       <div class="columns large-3 medium-6">
         <ul class="inline-list">
           <li><%= link_to 'Show', task %></li>
-          <li><%= link_to 'Edit', edit_task_path(task) %></li>
-          <li><%= link_to 'Destroy', task, method: :delete, data: { confirm: 'Are you sure?' } %></li>
+          <% if user_signed_in? %>
+            <li><%= link_to 'Edit', edit_task_path(task) %></li>
+            <li><%= link_to 'Destroy', task, method: :delete, data: { confirm: 'Are you sure?' } %></li>
+          <% end %>
         </ul>
       </div>
     </div>
     <% end %>
+  <% end %>
+  
+  <h3>Unmatured Tasks</h3>
+  <% @tasks.each do |task| %>
+    <% 
+      datenow = Time.now 
+    %>
+      <% if task.check == false && task.end_date > datenow %>
+      <hr>
+      <div class="row">
+        <div class="columns large-9 medium-6">
+        <blockquote>
+          <%= task.title %>
+          <cite><%= task.user.username %> - <%= time_ago_in_words(task.created_at) %> ago </cite>
+          <ul class="no-bullet">
+            <li>Termination date: <%= task.end_date %></li>
+          </ul>
+        </blockquote>
+        </div>
+        <div class="columns large-3 medium-6">
+          <ul class="inline-list">
+            <li><%= link_to 'Show', task %></li>
+            <% if user_signed_in? %>
+              <li><%= link_to 'Edit', edit_task_path(task) %></li>
+              <li><%= link_to 'Destroy', task, method: :delete, data: { confirm: 'Are you sure?' } %></li>
+            <% end %>
+          </ul>
+        </div>
+      </div>
+      <% end %>
+    <% end %>
+  
+  <h2>Completed Tasks</h2>
+    <% @tasks.each do |task| %>
+      <% if task.check == true %>
+      <hr>
+      <div class="row">
+        <div class="columns large-9 medium-6">
+        <blockquote>
+          <%= task.title %>
+          <cite><%= task.user.username %> - <%= time_ago_in_words(task.created_at) %> ago </cite>
+          <ul class="no-bullet">
+            <li>Termination date: <%= task.end_date %></li>
+          </ul>
+        </blockquote>
+        </div>
+        <div class="columns large-3 medium-6">
+          <ul class="inline-list">
+            <li><%= link_to 'Show', task %></li>
+            <% if user_signed_in? %>
+              <li><%= link_to 'Edit', edit_task_path(task) %></li>
+              <li><%= link_to 'Destroy', task, method: :delete, data: { confirm: 'Are you sure?' } %></li>
+            <% end %>
+          </ul>
+        </div>
+      </div>
+    <% end %>
+  <% end %>
