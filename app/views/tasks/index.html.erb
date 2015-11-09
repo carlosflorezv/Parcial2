@@ -13,7 +13,7 @@
       <% if task.check == false && task.end_date < datenow %>
         <hr>
     <div class="row">
-      <div class="columns large-9 medium-6">
+      <div class="columns large-7 medium-6">
       <blockquote>
         <%= task.title %>
         <cite><%= task.user.username %> - <%= time_ago_in_words(task.created_at) %> ago </cite>
@@ -22,12 +22,12 @@
         </ul>
       </blockquote>
       </div>
-      <div class="columns large-3 medium-6">
+      <div class="columns large-5 medium-6">
         <ul class="inline-list">
-          <li><%= link_to 'Show', task %></li>
+          <li class="button small secondary"><%= link_to 'Show', task %></li>
           <% if user_signed_in? %>
-            <li><%= link_to 'Edit', edit_task_path(task) %></li>
-            <li><%= link_to 'Destroy', task, method: :delete, data: { confirm: 'Are you sure?' } %></li>
+            <li class="button small secondary"><%= link_to 'Edit', edit_task_path(task) %></li>
+            <li class="button small secondary"><%= link_to 'Destroy', task, method: :delete, data: { confirm: 'Are you sure?' } %></li>
           <% end %>
         </ul>
       </div>
@@ -65,7 +65,7 @@
       <% end %>
     <% end %>
   
-  <h2>Completed Tasks</h2>
+  <h2 class="subheader">Completed Tasks</h2>
     <% @tasks.each do |task| %>
       <% if task.check == true %>
       <hr>

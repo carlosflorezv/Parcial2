@@ -19,20 +19,29 @@
     <%= f.label :description %><br>
     <%= f.text_area :description %>
   </div>
-  <div class="field">
-    <%= f.label :duration %><br>
-    <%= f.time_select :duration %>
-  </div>
-  <div class="field">
-    <%= f.label :start_date %><br>
-    <%= f.date_select :start_date %>
-  </div>
-  <div class="field">
-    <%= f.label :end_date %><br>
-    <%= f.date_select :end_date %>
+  <div class="row">
+    <div class="columns large-4">
+      <div class="field">
+        <%= f.label :duration %><br>
+        <%= f.time_select :duration %>
+      </div>
+    </div>
+    <div class="columns large-4">
+        <div class="field">
+          <%= f.label :start_date %><br>
+          <%= f.date_select :start_date %>
+        </div>
+      </div>
+    <div class="columns large-4">
+      <div class="field">
+        <%= f.label :end_date %><br>
+        <%= f.date_select :end_date %>
+      </div>
+    </div>
   </div>
   
   <div class="field">
+    Finished Task
     <%= f.label :check %><br>
     <%= f.check_box :check %>
   </div>
