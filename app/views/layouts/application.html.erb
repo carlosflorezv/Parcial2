@@ -25,19 +25,12 @@
       </ul>
     
         <section class="top-bar-section">
-          <!-- Left Nav Section -->
-        <ul class="left">
-          <li class"divider"></li>
-          <li>
-            <%= link_to 'Tasks', tasks_path %>
-          </li>
-        </ul>
         
         <!-- Right Nav Section -->
         <ul class="right">
           <li class"divider"></li>
           <% if user_signed_in? %>
-              <li>
+              <li class="active">
                 <%= link_to current_user.first_name + ' ' + current_user.last_name ,  edit_user_registration_path %>
               </li>
               <li>
